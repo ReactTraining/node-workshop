@@ -1,0 +1,45 @@
+{
+  "name": "node-workshop",
+  "version": "0.1.0",
+  "description": "ReactTraining.com Node Workshop",
+  "//type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "app": "nodemon --exec \"ts-node app/index.ts\"  || exit 0",
+    "// NOTES": "backslashes for Windows to work",
+    "// LECTURES:": "",
+    "lecture-1": "clear && node lessons/01-intro/lecture",
+    "lecture-2": "clear && nodemon --exec \"ts-node lessons/02-async/lecture/index.ts\" || exit 0",
+    "lecture-3": "clear && nodemon --exec \"ts-node lessons/03-http-server/lecture/index.ts\" || exit 0",
+    "// EXERCISES:": "",
+    "exercise-1": "clear && node lessons/01-intro/exercise",
+    "exercise-2": "clear && nodemon --exec \"ts-node lessons/02-async/exercise/index.ts\"  || exit 0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.10",
+    "@types/ejs": "^3.0.6",
+    "@types/express": "^4.17.1",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.35",
+    "@types/node-fetch": "^2.5.8",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2
+  }
+}

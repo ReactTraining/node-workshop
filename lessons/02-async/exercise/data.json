@@ -1,0 +1,8 @@
+{
+  "users": [
+    { "id": 1, "name": "Michael Jackson" },
+    { "id": 2, "name": "Ryan Florence" },
+    { "id": 3, "name": "Brad Westfall" },
+    { "id": 4, "name": "Chance Stickland" }
+  ]
+}
