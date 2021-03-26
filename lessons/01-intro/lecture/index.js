@@ -1,4 +1,5 @@
 // https://nodejs.org/docs/latest-v14.x/api/globals.html
+console.log(process.versions)
 console.log(process.cwd())
 console.log(__dirname)
 console.log(__filename)

@@ -4,7 +4,7 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import { router } from './routes'
-import { addCORSPolicy } from './utils/cors'
+import { addCORSPolicy } from './middleware/cors'
 
 export const app = express()
 

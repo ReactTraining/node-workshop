@@ -1,7 +1,8 @@
-# Intro
+# Intro Lecture
 
-# Main Topics to Cover
+## Main Topics to Cover
 
+- ✅ Overview
 - ✅ Scope
 - ✅ Object and Array literals
 - ✅ Function Types
@@ -9,6 +10,20 @@
 - ✅ File System (fs)
 
 This first lesson gives the attendees an overview of modern JavaScript syntax. Each topic doesn't have to be taught in exactly this order, but these should be the main takeaways by the lesson is done.
+
+## Overview
+
+Node is:
+
+- Asynchronous, event-driven, and non-blocking
+- Single Threaded
+- Uses Event Loop to handle requests and concurrency
+
+Modules:
+
+- Modules are file-based. Import any variable from a module including numbers, strings, arrays, classes, and functions.
+- We can also resolve a folder with an `index.js` file
+- Modules resolve: Core Modules, `npm_modules`, local modules
 
 ## Scope
 

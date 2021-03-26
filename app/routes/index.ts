@@ -1,5 +1,5 @@
 import express from 'express'
-import { errorHandler } from '../utils/errorHandler'
+import { errorHandler } from '../middleware/errorHandler'
 export const router = express.Router()
 
 // Home Page (uses EJS views)

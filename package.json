@@ -6,14 +6,18 @@
   "scripts": {
     "start": "node index.js",
     "app": "nodemon --exec \"ts-node app/index.ts\"  || exit 0",
-    "// NOTES": "backslashes for Windows to work",
+    "website": "npx http-server website",
+    "// NOTES": "backslashes in --exec commands for Windows to work",
     "// LECTURES:": "",
     "lecture-1": "clear && node lessons/01-intro/lecture",
     "lecture-2": "clear && nodemon --exec \"ts-node lessons/02-async/lecture/index.ts\" || exit 0",
-    "lecture-3": "clear && nodemon --exec \"ts-node lessons/03-http-server/lecture/index.ts\" || exit 0",
+    "lecture-3": "clear && nodemon --exec \"ts-node lessons/03-server/lecture/index.ts\" || exit 0",
+    "lecture-4": "clear && nodemon --exec \"ts-node lessons/04-middleware/lecture/index.ts\" || exit 0",
     "// EXERCISES:": "",
     "exercise-1": "clear && node lessons/01-intro/exercise",
-    "exercise-2": "clear && nodemon --exec \"ts-node lessons/02-async/exercise/index.ts\"  || exit 0"
+    "exercise-2": "clear && nodemon --exec \"ts-node lessons/02-async/exercise/index.ts\"  || exit 0",
+    "exercise-3": "clear && nodemon --exec \"ts-node lessons/03-server/exercise/index.ts\"  || exit 0",
+    "exercise-4": "clear && nodemon --exec \"ts-node lessons/04-middleware/exercise/index.ts\"  || exit 0"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.2",
@@ -29,10 +33,13 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@types/http-errors": "^1.8.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1"
   },

@@ -1,5 +1,5 @@
-function csvToJSON() {
-  let json = data
+function csvToJSON(csv) {
+  let json = csv
     .split('\n')
     .map((item) => {
       const [id, name] = item.split(',')
@@ -7,5 +7,7 @@ function csvToJSON() {
     })
     .join(',\n')
 
-  json = `{ "users": [${json}] }`
+  return `[${json}]`
 }
+
+module.exports = csvToJSON

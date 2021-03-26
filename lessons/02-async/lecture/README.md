@@ -1,14 +1,17 @@
-# State Lecture
+# Async Lecture
 
-# Main Topics to Cover
+## Main Topics to Cover
 
 - ✅ General overview of asynchronous code
 - ✅ Single Threaded JavaScript
 - ✅ Event Loop
-- ✅ Promises
+- ✅ `process.nextTick()`
+- ✅ `setTimeout(fn, 0)` and `setImmediate()`
 - ✅ fetch API
+- ✅ Promises
+- ✅ Async/Await
 
-# Lecture
+## Lecture
 
 Progression of code for making our own promise-based function:
 
@@ -69,15 +72,19 @@ getCSVFile(dataPath)
 // ----------------
 // 5. Refactor the old callback code to use promises
 function getCSVFile(path: string) {
-  return new Promise<string>((resolve, reject) => {
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        reject(err)
-        return
-      }
-      resolve(data)
+  return (
+    new Promise() <
+    string >
+    ((resolve, reject) => {
+      fs.readFile(path, 'utf8', (err, data) => {
+        if (err) {
+          reject(err)
+          return
+        }
+        resolve(data)
+      })
     })
-  })
+  )
 }
 
 getCSVFile(dataPath).then((data) => {
@@ -91,7 +98,7 @@ It would be good to mention that most the time we use promises, we're consumers 
 // ----------------
 // 6.
 
-// Change the lesson to start 
+// Change the lesson to start
 import fetch from 'node-fetch'
 
 function getVehicles(url: string) {
