@@ -7,21 +7,18 @@ import { getUsers } from './users'
 // <h1>Brad Westfall</h1>
 // <h1>Chance Stickland</h1>
 
-// The whatIsThis variable is an array of user objects
-// First, use <Array>.map to turn it into an array of names (strings)
+// First, get an array of user objects from getUsers
+// Then, use <Array>.map to turn it into an array of names (strings)
 // Then use <Array>.map again to turn the array of strings into an array of HTML strings
 // Then use <Array>.join('\n') to turn the array of strings into one string joined by a newline
-// For a bonus, try the above with multiple uses of `.then`
+// For a bonus, try the above with multiple uses of `.then` for practice
 
 function getHTMLNames(): Promise<string> {
-  return getUsers().then((whatIsThis) => {
-    console.log(whatIsThis)
+  // return getUsers() // This is a promise based function
 
-    // Since this is TypeScript, and we've annotated above that getHTMLNames returns
-    // a promise that will resolve to a string, we have to return a string or we'll
-    // get errors. Eventually we'll return a string of HTML names:
-    return ''
-  })
+  // This is just to temporarily satisfy TypeScript since we told TypeScript we
+  // would return promise that resolves to a string.
+  return Promise.resolve('This is temporary, use the getUsers function')
 }
 
 getHTMLNames().then((names) => {
