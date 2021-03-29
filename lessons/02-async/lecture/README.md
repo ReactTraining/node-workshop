@@ -70,6 +70,7 @@ function getCSVFile(path: string) {
 getCSVFile(dataPath)
 
 // ----------------
+// What if fsPromise never existed, let's make our own promise
 // 5. Refactor the old callback code to use promises
 function getCSVFile(path: string) {
   return (
