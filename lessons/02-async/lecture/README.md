@@ -102,25 +102,22 @@ It would be good to mention that most the time we use promises, we're consumers 
 // Change the lesson to start
 import fetch from 'node-fetch'
 
-function getVehicles(url: string) {
+function getVehicle(url: string) {
   return fetch(url).then((response) => response.json())
 }
 
-function getUserVehicles(id: number) {
-  return (
-    fetch(`https://swapi.dev/api/people/${id}`)
-      .then((response) => response.json())
-      // data = {
-      //   name: 'Luke Skywalker',
-      //   vehicles: ['http://swapi.dev/api/vehicles/14/', 'http://swapi.dev/api/vehicles/30/']
-      // }
-      .then((data) => data.vehicles)
-  )
+function getPersonVehicles(id: number): Promise<string[]> {
+  return fetch(`https://swapi.dev/api/people/${id}`)
+    .then((response) => response.json())
+    .then((data) => data.vehicles)
 }
 
-getUserVehicles(1)
-  .then((vehicles) => getVehicles(vehicles[0]))
-  .then((vehicle) => {
-    console.log(vehicle.name)
+getPersonVehicles(1)
+  .then((vehicles) => {
+    const p = vehicles.map((url) => getVehicle(url))
+    return Promise.all(p)
+  })
+  .then((allVehicles) => {
+    console.log(allVehicles)
   })
 ```
