@@ -1,11 +1,34 @@
-import fs from 'fs'
 import path from 'path'
-// const fsPromises = require('fs').promises // the way the docs show
-// import { promises as fsPromises } from 'fs' // the esm version
+import fs from 'fs'
+import { promises as fsPromises } from 'fs' // the esm version
+
 // import fetch from 'node-fetch'
 
 const dataPath = path.join(__dirname, `data.csv`)
 
-// Let's make this asynchronous
-const data = fs.readFileSync(dataPath, 'utf8')
-console.log(data)
+function getData(path: string) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, 'utf8', (error, data) => {
+      if (error) {
+        reject(error)
+        return
+      }
+      resolve(data)
+    })
+  })
+}
+
+async function foo() {
+  try {
+    const data = await getData(dataPath)
+    return data
+  } catch (e) {}
+}
+
+async function main() {
+  foo().then((x) => {
+    console.log(x)
+  })
+}
+
+main()

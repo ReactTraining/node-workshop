@@ -4,11 +4,8 @@ import { getAuthUser } from './auth'
 const app = express()
 const port = 3000
 
-// This is the only middleware function you need to work on.
-// See the README for more information.
-app.get('*', (req, res, next) => {
-  const authUser = getAuthUser()
-  console.log(authUser)
+app.use((req, res, next) => {
+  req.user = getAuthUser()
   next()
 })
 
@@ -17,7 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/account', (req, res) => {
-  res.send(`<h1>Hello ${req.user && req.user.name}, you are logged in<h1>`)
+  if (req.user) res.send(`<h1>Hello ${req.user && req.user.name}, you are logged in<h1>`)
 })
 
 app.use((req, res) => {

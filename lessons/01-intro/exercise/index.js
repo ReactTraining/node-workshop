@@ -1,8 +1,13 @@
 const data = require('./data.json')
-console.log(data)
 
 // Task:
 // Output `Ryan's id is 2`
+
+const results = data.users.find((item) => {
+  return item.name.includes('Ryan')
+})
+
+console.log(`${results.name.split(' ')[0]}'s id is ${results.id}`)
 
 // Use <Array>.find() to find the object that has Ryan's name
 // Use <String>.includes() to see if a string includes a value (case sensitive)

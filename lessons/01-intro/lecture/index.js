@@ -1,19 +1,36 @@
-// https://nodejs.org/docs/latest-v14.x/api/globals.html
-console.log(process.versions)
-console.log('process.cwd():', process.cwd())
-console.log('__dirname:', __dirname)
-console.log('__filename:', __filename)
+const fs = require('fs')
+const path = require('path')
 
-// Let's talk about scope
+const dataPath = path.join(__dirname, 'data.csv')
 
-// var x = [5, 6, 7]
-// function scope() {
-//   for (var i = 0; i < x.length; i++) {
-//     var item = x[i]
-//     console.log(item)
-//   }
+function csvToJSON(path) {
+  const data = fs.readFileSync(path, 'utf8')
+  const lines = data
+    .split('\n')
+    .filter(Boolean)
+    .map((line) => {
+      const [id, name] = line.split(',')
+      return `{ "id": ${id.trim()}, "name": "${name.trim()}"  }`
+    })
 
-//   console.log(i)
-//   console.log(item)
-// }
-// scope()
+  return `[${lines.join(',')}]`
+}
+
+console.log(JSON.parse(csvToJSON(dataPath)))
+
+function csvToJSON() {
+  // Declaration
+}
+
+const csvToJSON = function () {
+  const this
+  return true
+}
+
+function outerScope() {
+  const that = this
+
+  const csvToJSON = function () {
+    console.log(this, that)
+  }
+}

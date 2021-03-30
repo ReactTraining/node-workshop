@@ -15,13 +15,25 @@ app.get('/', (req, res) => {
 })
 
 app.get('/users', (req, res, next) => {
-  res.json({})
+  db.query('SELECT * FROM user').then((users) => {
+    res.json(users)
+  })
 })
 
 app.get('/users/:id', (req, res, next) => {
   const { id } = req.params
-  // id will be a string, check to see if it represents an integer with `isInteger(id)`
-  res.json({})
+  if (!isInteger(id)) {
+    next()
+    return
+  }
+
+  db.query(`SELECT * FROM user WHERE user.id = ${id}`).then((users) => {
+    if (!users.length) {
+      next()
+      return
+    }
+    res.json(users[0])
+  })
 })
 
 app.use((req, res) => {
