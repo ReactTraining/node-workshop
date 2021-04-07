@@ -1,7 +1,7 @@
 // Okay you caught us, it was all fake. But we can't really expect you
-// to setup local databases on your machine. If you did use a third
-// party database driver for an SQL-based database, it would probably
-// work a little like this:
+// to setup local databases on your machine specifically for a workshop.
+// If you did use a third party database driver for an SQL-based
+// database, it would probably work a little like this:
 // db.query('SELECT ...').then(results => {})
 
 const data = [

@@ -30,7 +30,7 @@ app.use((req, res) => {
 
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   if (err instanceof NotAuthorized) {
-    res.status(401).send(err.message || 'Not Authorized')
+    res.status(403).send(err.message || 'Not Authorized')
   } else {
     res.status(500).send(err.message || err)
   }
