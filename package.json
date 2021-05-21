@@ -14,6 +14,7 @@
     "lecture-3": "clear && nodemon --exec \"ts-node lessons/03-server/lecture/index.ts\" || exit 0",
     "lecture-4": "clear && nodemon --exec \"ts-node lessons/04-middleware/lecture/index.ts\" || exit 0",
     "lecture-5": "clear && nodemon --exec \"ts-node lessons/05-authentication/lecture/index.ts\" || exit 0",
+    "lecture-6": "clear && nodemon --exec \"ts-node lessons/06-ssr/lecture/index.tsx\" || exit 0",
     "// EXERCISES:": "",
     "exercise-1": "clear && node lessons/01-js-and-node/exercise",
     "exercise-2": "clear && ts-node lessons/02-async/exercise/index.ts",
@@ -22,6 +23,10 @@
     "exercise-5": "clear && nodemon --exec \"ts-node lessons/05-authentication/exercise/index.ts\"  || exit 0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-typescript": "^7.13.0",
+    "@babel/register": "^7.13.16",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.10",
     "@types/ejs": "^3.0.6",
@@ -38,6 +43,8 @@
     "@types/cookies": "^0.7.6",
     "@types/http-errors": "^1.8.0",
     "@types/jsonwebtoken": "^8.5.1",
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
     "cookie-parser": "^1.4.5",
     "cookies": "^0.8.0",
     "cors": "^2.8.5",
@@ -47,12 +54,20 @@
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "prettier": {
     "printWidth": 100,
     "semi": false,
     "singleQuote": true,
     "tabWidth": 2
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ]
   }
 }
