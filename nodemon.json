@@ -1,4 +1,4 @@
 {
-  "watch": ["app", "lessons/*"],
+  "watch": ["app", "lessons", "src"],
   "ext": "ts,tsx,json,csv"
 }
