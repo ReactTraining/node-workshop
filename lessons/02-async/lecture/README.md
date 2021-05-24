@@ -15,7 +15,7 @@
 
 Progression of code for making our own promise-based function:
 
-```js
+```ts
 // ----------------
 // 1. Start
 const data = fs.readFileSync(dataPath, 'utf8')
@@ -73,19 +73,15 @@ getCSVFile(dataPath)
 // What if fsPromise never existed, let's make our own promise
 // 5. Refactor the old callback code to use promises
 function getCSVFile(path: string) {
-  return (
-    new Promise() <
-    string >
-    ((resolve, reject) => {
-      fs.readFile(path, 'utf8', (err, data) => {
-        if (err) {
-          reject(err)
-          return
-        }
-        resolve(data)
-      })
+  return new Promise<string>((resolve, reject) => {
+    fs.readFile(path, 'utf8', (err, data) => {
+      if (err) {
+        reject(err)
+        return
+      }
+      resolve(data)
     })
-  )
+  })
 }
 
 getCSVFile(dataPath).then((data) => {
@@ -95,7 +91,7 @@ getCSVFile(dataPath).then((data) => {
 
 It would be good to mention that most the time we use promises, we're consumers of an API or a native function that gives us a promise, so we don't typically have to do `new Promise` a lot. Let's consume this `fetch` promise-based function to get data from another server:
 
-```js
+```ts
 // ----------------
 // 6.
 
