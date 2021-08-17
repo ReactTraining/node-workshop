@@ -16,9 +16,9 @@ If you have any problems with these steps, make sure you see the [Troubleshootin
 
 **Need to install Git?** - http://git-scm.com/downloads
 
-**Need to install Node?** We recommend using [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm) instead of installing from source. Installing from source works, but it's difficult to maintain your node version later on (which is why `nvm` exists)
+**Need to install Node?** We recommend using [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm) instead of installing from source. Installing from source works, but it's difficult to maintain your node version later on (which is why `nvm` exists). Please see the Windows section for a different install process.
 
-**Windows Users!** Please Please read the [Windows Users](#windows-users) section below for installing Node and WSL.
+**Windows Users!** Please read the [Windows Users](#windows-users) section below for installing NVM, Node, and WSL.
 
 If you need to verify that you have NVM installed: `nvm --version`. Then install Node:
 
@@ -106,7 +106,11 @@ $ npm install
 
 ## Windows Users
 
-**TL;DR: You probably want to use the Windows Subsystem for Linux (WSL) instead of GitBash or PowerShell**
+There are two days to get NVM (Node Version Manager) -- the "Windows" way and the "Linux" way. Lots of open source command-line tools are written for Linux (Unix) systems so they might be problematic when we try to use their Windows way to do it. But if you can get it to work, it's probably the most simple approach. To use NVM for Windows, follow their instructions here: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+
+### Or...
+
+You can use use Windows Subsystem for Linux (WSL) instead of GitBash or PowerShell and essentially host a Linux environment on Windows. This way is a little more involved but we've had lots of success with our Windows audience in our workshop when they do the WSL approach.
 
 - WSL 2 Installation: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 - Node on Windows: https://docs.microsoft.com/en-us/windows/nodejs/setup-on-wsl2
