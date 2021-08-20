@@ -1,5 +1,4 @@
 const data = require('./data.json')
-console.log(data)
 
 // Task:
 // Output `Ryan's id is 2`
@@ -10,3 +9,7 @@ console.log(data)
 // Use Template Strings to create the output
 
 // All exercises have a `.final` for files that you worked on if you need to see a solution
+
+const ryan = data.users.find((user) => user.name.includes('Ryan'))
+const name = ryan.name.split(' ')[0]
+console.log(`${name}'s id is ${ryan.id}`)

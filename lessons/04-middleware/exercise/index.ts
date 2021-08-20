@@ -4,12 +4,16 @@ import { getAuthUser } from './auth'
 const app = express()
 const port = 3000
 
-// This is the only middleware function you need to work on.
-// See the README for more information.
-app.get('*', (req, res, next) => {
+class NotAuthorized extends Error {}
+
+app.get('/account', (req, res, next) => {
   const authUser = getAuthUser()
-  console.log(authUser)
-  next()
+  if (authUser) {
+    req.user = authUser
+    next()
+  } else {
+    throw new NotAuthorized()
+  }
 })
 
 app.get('/', (req, res) => {
@@ -25,8 +29,11 @@ app.use((req, res) => {
 })
 
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error(err.message, err.stack)
-  res.status(500).send(err.message || err)
+  if (err instanceof NotAuthorized) {
+    res.status(403).send(err.message || 'Not Authorized')
+  } else {
+    res.status(500).send(err.message || err)
+  }
 })
 
 app.listen(port, () => {

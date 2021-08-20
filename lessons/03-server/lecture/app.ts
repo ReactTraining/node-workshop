@@ -2,7 +2,12 @@ import express from 'express'
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
+function isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction) {
+  console.log('this is middleware')
+  res.status(403).send('not authorized')
+}
+
+app.get('/', isLoggedIn, (req, res, next) => {
   res.send('<h1>Express Home<h1>')
 })
 
