@@ -18,7 +18,7 @@ export const db = {
     const results = data.filter((row) => {
       const formatted = sql.toLowerCase().replace(/(`|')/g, '')
       if (formatted === 'select * from user') return true
-      const matches = formatted.match(/id = (\d)/)
+      const matches = formatted.match(/id = (\d+)/)
       return matches ? row.id === parseInt(matches[1], 10) : false
     })
 

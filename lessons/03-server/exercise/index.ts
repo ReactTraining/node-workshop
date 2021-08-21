@@ -1,26 +1,25 @@
 import express from 'express'
 import { db } from './db'
+
 const app = express()
 const port = 3000
-
-// Valid SQL statements:
-// db.select('SELECT * FROM user')
-// db.select('SELECT * FROM user WHERE user.id = 1')
-// db.select('SELECT * FROM user WHERE user.id = 2')
-// db.select('SELECT * FROM user WHERE user.id = 3')
-// db.select('SELECT * FROM user WHERE user.id = 4')
 
 app.get('/', (req, res) => {
   res.send('<h1>Express Home<h1>')
 })
 
 app.get('/users', (req, res, next) => {
+  // db.query('SELECT * FROM user')
   res.json({})
 })
 
 app.get('/users/:id', (req, res, next) => {
+  // Valid users have id's: 1, 2, 3, and 4
   const { id } = req.params
-  // id will be a string, check to see if it represents an integer with `isInteger(id)`
+  // Parameters always come as strings. So verify it's a valid numeric string with `isInteger(id)`
+  // and respond with a 404 not found if it's not valid
+
+  // db.query('SELECT * FROM user WHERE user.id = 1')
   res.json({})
 })
 
