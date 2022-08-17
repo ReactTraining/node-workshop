@@ -14,11 +14,13 @@ import { getUsers } from './users'
 // For a bonus, try the above with multiple uses of `.then` for practice
 
 function getHTMLNames(): Promise<string> {
-  // return getUsers() // This is a promise based function
-
-  // This is just to temporarily satisfy TypeScript since we told TypeScript we
-  // would return promise that resolves to a string.
-  return Promise.resolve('This is temporary, use the getUsers function')
+  return getUsers()
+    .then((users) => {
+      return users.map((u) => u.name)
+    })
+    .then((names) => {
+      return names.map((n) => `<h1>${n}</h1>`).join('\n')
+    })
 }
 
 getHTMLNames().then((names) => {

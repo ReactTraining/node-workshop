@@ -71,12 +71,8 @@ router.get('/logout', (req, res) => {
  * From this point on, all routes require login
  */
 
-// Middleware verifies user has JWT token and adds the
-// user to req.user for all other middleware (routes)
-router.use(requireAuthentication)
-
 // Account Page (Must be logged in)
-router.get('/account', (req, res) => {
+router.get('/account', requireAuthentication, (req, res) => {
   res.send(`<h1>Hello ${req.user && req.user.name}, you are logged in</h1>`)
 })
 

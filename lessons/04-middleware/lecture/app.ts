@@ -13,6 +13,15 @@ export const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+// app.use(logger('dev'))
+app.use(logger('common')) // for apache style
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(
+  cors({
+    // This is the website's port when started with `npx http-server`
+    origin: 'http://localhost:8080',
+  })
+)
 
 /****************************************
   Routes

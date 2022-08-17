@@ -1,6 +1,5 @@
 import express from 'express'
 import { db } from './db'
-
 const app = express()
 const port = 3000
 
@@ -9,18 +8,26 @@ app.get('/', (req, res) => {
 })
 
 app.get('/users', (req, res, next) => {
-  // db.query('SELECT * FROM user')
-  res.json({})
+  db.query('SELECT * FROM user')
+    .then((results) => {
+      res.json(results)
+    })
+    .catch(next)
 })
 
 app.get('/users/:id', (req, res, next) => {
-  // Valid users have id's: 1, 2, 3, and 4
   const { id } = req.params
-  // Parameters always come as strings. So verify it's a valid numeric string with `isInteger(id)`
-  // and respond with a 404 not found if it's not valid
-
-  // db.query('SELECT * FROM user WHERE user.id = 1')
-  res.json({})
+  if (!isInteger(id)) {
+    return next()
+  }
+  db.query(`SELECT * FROM user WHERE user.id = '${id}'`)
+    .then((results) => {
+      if (results.length === 0) {
+        return next()
+      }
+      res.json(results[0])
+    })
+    .catch(next)
 })
 
 app.use((req, res) => {
