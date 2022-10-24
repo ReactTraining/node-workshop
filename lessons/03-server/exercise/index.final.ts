@@ -17,10 +17,16 @@ app.get('/users', (req, res, next) => {
 
 app.get('/users/:id', (req, res, next) => {
   const { id } = req.params
-  if (!isInteger(id)) next()
+  if (!isInteger(id)) {
+    next()
+    return
+  }
   db.query(`SELECT * FROM user WHERE user.id = '${id}'`)
     .then((results) => {
-      if (results.length === 0) next()
+      if (results.length === 0) {
+        next()
+        return
+      }
       res.json(results[0])
     })
     .catch(next)
