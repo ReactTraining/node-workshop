@@ -7,12 +7,30 @@ import cors from 'cors'
 
 export const app = express()
 
-// Common Middleware
+/****************************************
+  Common Express Middleware
+*****************************************/
+
+// Makes logs as requests come in
+app.use(logger('dev'))
+
+// Tells express to use a folder for static assets
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Makes all cross origin requests possible (we should lock this down more)
+app.use(cors())
+
+// Parse cookie header info
+app.use(cookieParser())
 
 // https://github.com/expressjs/body-parser#bodyparserurlencodedoptions
-app.use(cookieParser())
-app.use(express.json())
+// https://stackoverflow.com/questions/47232187/express-json-vs-bodyparser-json
+
+// Parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
+
+// Parse application/json
+app.use(express.json())
 
 /****************************************
   Routes
