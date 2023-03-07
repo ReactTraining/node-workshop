@@ -1,22 +1,17 @@
-// Node Versions
-// https://nodejs.dev/en/about/releases/
+const fs = require('fs')
+const path = require('path')
 
-// https://nodejs.org/docs/latest-v14.x/api/globals.html
-console.log(process.versions)
-console.log('process.cwd():', process.cwd())
-console.log('__dirname:', __dirname)
-console.log('__filename:', __filename)
+const dataPath = path.join(__dirname, `data.csv`)
+const data = fs.readFileSync(dataPath, 'utf8') // wait
 
-// Let's talk about scope
+let json = data
+  .split('\n')
+  .filter((item) => item.length > 0)
+  .map((item) => {
+    const [id, name] = item.split(',')
+    return `{ "id": ${id}, "name": "${name.trim()}" }`
+  })
 
-// var x = [5, 6, 7]
-// function scope() {
-//   for (var i = 0; i < x.length; i++) {
-//     var item = x[i]
-//     console.log(item)
-//   }
+json = `{ "users": [${json}] }`
 
-//   console.log(i)
-//   console.log(item)
-// }
-// scope()
+console.log(JSON.parse(json))
