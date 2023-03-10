@@ -4,8 +4,8 @@
 
 You need to get two paths working:
 
-- `/users` needs to return an array of all users
-- `/users/:id` needs to return an object of just this user's id
+- `/users` needs to return an array of user objects
+- `/users/:id` needs to return a user object
 
 Both routes are already made. In each one, use the `db.query('SELECT * FROM ...')` API to perform an SQL search for what you want. We also gave you some SQL examples in the file. The users in this mini database have id's ranging from 1 to 4.
 
