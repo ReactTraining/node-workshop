@@ -2,7 +2,6 @@
   "name": "node-workshop",
   "version": "0.1.0",
   "description": "ReactTraining.com Node Workshop",
-  "//type": "module",
   "scripts": {
     "start": "node index.js",
     "app": "nodemon --exec \"ts-node app/index.ts\"  || exit 0",
@@ -11,17 +10,18 @@
     "// LECTURES:": "",
     "lecture-1": "clear && node lessons/01-js-and-node/lecture",
     "lecture-2": "clear && ts-node lessons/02-async/lecture/index.ts",
-    "lecture-3": "clear && nodemon --exec \"ts-node lessons/03-server/lecture/index.ts\" || exit 0",
-    "lecture-4": "clear && nodemon --exec \"ts-node lessons/04-middleware/lecture/index.ts\" || exit 0",
-    "lecture-5": "clear && nodemon --exec \"ts-node lessons/05-authentication/lecture/index.ts\" || exit 0",
-    "lecture-6-ts": "clear && nodemon --exec \"ts-node lessons/06-ssr/index.tsx\" || exit 0",
-    "lecture-6-js": "clear && nodemon --exec \"babel-node lessons/06-ssr\" || exit 0",
+    "lecture-3": "clear && ts-node lessons/03-cli/lecture/index.ts",
+    "lecture-4": "clear && nodemon --exec \"ts-node lessons/04-server/lecture/index.ts\" || exit 0",
+    "lecture-5": "clear && nodemon --exec \"ts-node lessons/05-middleware/lecture/index.ts\" || exit 0",
+    "lecture-6": "clear && nodemon --exec \"ts-node lessons/06-authentication/lecture/index.ts\" || exit 0",
+    "lecture-7": "clear && nodemon --exec \"ts-node lessons/07-ssr/index.tsx\" || exit 0",
     "// EXERCISES:": "",
     "exercise-1": "clear && node lessons/01-js-and-node/exercise",
     "exercise-2": "clear && ts-node lessons/02-async/exercise/index.ts",
-    "exercise-3": "clear && nodemon --exec \"ts-node lessons/03-server/exercise/index.ts\"  || exit 0",
-    "exercise-4": "clear && nodemon --exec \"ts-node lessons/04-middleware/exercise/index.ts\"  || exit 0",
-    "exercise-5": "clear && nodemon --exec \"ts-node lessons/05-authentication/exercise/index.ts\"  || exit 0"
+    "exercise-3": "clear && ts-node lessons/03-cli/exercise/index.ts",
+    "exercise-4": "clear && nodemon --exec \"ts-node lessons/04-server/exercise/index.ts\"  || exit 0",
+    "exercise-5": "clear && nodemon --exec \"ts-node lessons/05-middleware/exercise/index.ts\"  || exit 0",
+    "exercise-6": "clear && nodemon --exec \"ts-node lessons/06-authentication/exercise/index.ts\"  || exit 0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -48,6 +48,7 @@
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@types/react-router-dom": "^5.1.7",
+    "@types/readline-sync": "^1.4.4",
     "cookie-parser": "^1.4.5",
     "cookies": "^0.8.0",
     "cors": "^2.8.5",
@@ -60,7 +61,8 @@
     "node-fetch": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "readline-sync": "^1.4.10"
   },
   "prettier": {
     "printWidth": 100,
