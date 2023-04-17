@@ -15,10 +15,9 @@ function wait(ms: number) {
 
 // Re-write main to use async/await
 
-function main() {
-  wait(1000).then(() => {
-    console.log('Wait for one second')
-  })
+async function main() {
+  await wait(1000)
+  console.log('Wait for one second')
 }
 
 /****************************************
@@ -27,26 +26,28 @@ function main() {
 
 // Re-write all functions to use async/await
 
-// function getVehicle(url: string) {
-//   return fetch(url).then((response) => response.json())
+// async function getVehicle(url: string) {
+//   const response = await fetch(url)
+//   const vehicle = await response.json()
+//   return vehicle
 // }
 
-// function getPersonVehicles(id: number): Promise<string[]> {
-//   return fetch(`https://swapi.dev/api/people/${id}`)
-//     .then((response) => response.json())
-//     .then((person) => person.vehicles)
+// async function getPersonVehicles(id: number): Promise<string[]> {
+//   const response = await fetch(`https://swapi.dev/api/people/${id}`)
+//   const person = await response.json()
+
+//   // The above could also be written as
+//   // const person = await fetch(`https://swapi.dev/api/people/${id}`).then((response) => response.json())
+
+//   return person.vehicles
 // }
 
-// function main() {
-//   getPersonVehicles(1)
-//     .then((vehicles) => {
-//       const promiseArray = vehicles.map((url) => getVehicle(url))
-//       return Promise.all(promiseArray)
-//     })
-//     .then((allVehicles) => {
-//       console.log('---')
-//       console.log(allVehicles)
-//     })
+// async function main() {
+//   const vehicles = await getPersonVehicles(1)
+//   const promiseArray = vehicles.map((url) => getVehicle(url))
+//   const allVehicles = await Promise.all(promiseArray)
+//   console.log('---')
+//   console.log(allVehicles)
 // }
 
 /****************************************
@@ -78,9 +79,13 @@ function main() {
 // }
 
 // async function main() {
-//   const vehicles = await getPersonVehicles(1)
-//   const promiseArray = vehicles.map((url) => getVehicle(url))
-//   const allVehicles = await Promise.all(promiseArray)
-//   console.log('---')
-//   console.log(allVehicles)
+//   try {
+//     const vehicles = await getPersonVehicles(1)
+//     const promiseArray = vehicles.map((url) => getVehicle(url))
+//     const allVehicles = await Promise.all(promiseArray)
+//     console.log('---')
+//     console.log(allVehicles)
+//   } catch (err) {
+//     console.log(err)
+//   }
 // }
