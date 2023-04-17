@@ -1,4 +1,4 @@
-# Async Lecture
+# Promises Lecture
 
 ## Main Topics to Cover
 
