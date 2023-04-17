@@ -1,6 +1,12 @@
 console.log("let's get started")
 
 /**
+ * Intro
+ */
+
+// EcmaScript, JavaScript, Node
+
+/**
  * Versions
  */
 
@@ -16,6 +22,13 @@ console.log("let's get started")
 // console.log('process.cwd():', process.cwd())
 // console.log('__dirname:', __dirname)
 // console.log('__filename:', __filename)
+
+/**
+ * Modules
+ */
+
+// CommonJS
+// ESModules
 
 /**
  * Env
@@ -40,3 +53,40 @@ console.log("let's get started")
 //   console.log(item)
 // }
 // scope()
+
+/**
+ * Object and Array Literals
+ */
+
+/**
+ * Function Types
+ */
+
+/**
+ * Expressions and Expression Chaining
+ */
+
+/**
+ * Map, Filter, Reduce, Find, Includes
+ */
+
+/**
+ * File System
+ */
+
+// const fs = require('fs')
+// const path = require('path')
+// const dataPath = path.join(__dirname, `data.csv`)
+// const data = fs.readFileSync(dataPath, 'utf8')
+
+// let json = data
+//   .split('\n')
+//   .map((item) => {
+//     const [id, name] = item.split(',')
+//     return `{ "id": ${id}, "name": "${name}" }`
+//   })
+//   .join(',\n')
+
+// json = `{ "users": [${json}] }`
+
+// console.log(JSON.parse(json))
