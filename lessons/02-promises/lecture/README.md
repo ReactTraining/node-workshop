@@ -10,7 +10,6 @@
   - https://nodejs.dev/en/learn/understanding-setimmediate/
 - ✅ fetch API
 - ✅ Promises
-- ✅ Async/Await
 
 ## Lecture
 
