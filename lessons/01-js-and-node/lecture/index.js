@@ -1,13 +1,33 @@
+console.log("let's get started")
+
+/**
+ * Versions
+ */
+
 // Node Versions
 // https://nodejs.dev/en/about/releases/
 
-// https://nodejs.org/docs/latest-v14.x/api/globals.html
-console.log(process.versions)
-console.log('process.cwd():', process.cwd())
-console.log('__dirname:', __dirname)
-console.log('__filename:', __filename)
+/**
+ * Globals
+ */
 
-// Let's talk about scope
+// https://nodejs.org/docs/latest/api/globals.html
+// console.log(process.versions)
+// console.log('process.cwd():', process.cwd())
+// console.log('__dirname:', __dirname)
+// console.log('__filename:', __filename)
+
+/**
+ * Env
+ */
+
+// require('dotenv').config()
+// console.log(process.env.SECRET) // from .env
+// console.log(process.env.NODE_ENV)
+
+/**
+ * Scope
+ */
 
 // var x = [5, 6, 7]
 // function scope() {
