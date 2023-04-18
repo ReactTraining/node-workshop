@@ -6,13 +6,9 @@ app.get('/', (req, res, next) => {
   res.send('<h1>Express Home<h1>')
 })
 
-app.get('/users/:userId', (req, res) => {
-  const userId = req.params.userId
+app.get('/users/:userId', (req, res, next) => {})
 
-  getUser(userId).then((user) => {
-    res.json(user) // responding with JSON header information
-  })
-})
+app.post('/users', (req, res, next) => {})
 
 app.use((req, res) => {
   res.status(404).send('<h1>Not Found</h1>')

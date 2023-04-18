@@ -1,5 +1,5 @@
 import express from 'express'
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken' // lots of these
 import Cookies from 'cookies'
 
 const tokenSecret = 'super-secret-make-this-really-long'
