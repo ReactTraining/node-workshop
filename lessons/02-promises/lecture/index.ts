@@ -4,8 +4,32 @@ import path from 'path'
 // import { promises as fsPromises } from 'fs' // the esm version
 // import fetch from 'node-fetch'
 
-const dataPath = path.join(__dirname, `data.csv`)
+// function getCSVData(dataPath: string) {
+//   return new Promise((resolve, reject) => {
+//     fs.readFile(dataPath, 'utf8', (err, data) => {
+//       if (err) {
+//         reject(err)
+//         return
+//       }
+//       resolve(data)
+//     })
+//   })
+// }
 
-// Let's make this asynchronous
-const data = fs.readFileSync(dataPath, 'utf8')
-console.log(data)
+// const dataPath = path.join(__dirname, `data.csv`)
+
+// getCSVData(dataPath).then((data) => {
+//   console.log(data)
+// })
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res()
+    }, ms)
+  })
+}
+
+sleep(5000).then((x) => {
+  console.log('we woke up')
+})

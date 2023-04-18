@@ -1,16 +1,31 @@
-import { User, createAccount, addAccountUser } from './users'
+import { User, createAccount, addAccountUser, emailUser, logNewUserStats } from './users'
 
-function signup(user: User) {
-  return createAccount()
-    .then((account) => {
-      return addAccountUser(account.accountId, user)
-    })
-    .then((user) => {
-      // emailUser(user)
-      // logNewUserStats(account.accountId)
-    })
+// function signup1(user: User) {
+//   return createAccount() // 50ms
+//     .then((account) => {
+//       return addAccountUser(account.accountId, user) // 50ms
+//     })
+//     .then((dbuser) => {
+//       const promiseArray = [emailUser(dbuser), logNewUserStats(account.accountId)]
+//       return Promise.allSettled(promiseArray)
+//     })
+// }
+
+async function signup(user: User) {
+  const account = await createAccount()
+  const dbuser = await addAccountUser(account.accountId, user)
+
+  const promiseArray = [emailUser(dbuser), logNewUserStats(account.accountId)]
+  return await Promise.allSettled(promiseArray)
 }
 
-signup({ name: 'brad' }).then(() => {
-  console.log('✅ User Added')
-})
+async function main() {
+  try {
+    const x = await signup({ name: 'brad' })
+    console.log(x)
+  } catch (e) {
+    console.log('error', e)
+  }
+}
+
+main()

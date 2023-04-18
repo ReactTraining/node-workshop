@@ -2,12 +2,16 @@ import express from 'express'
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   res.send('<h1>Express Home<h1>')
 })
 
-app.get('/users', (req, res) => {
-  res.send('<h1>Express Users<h1>')
+app.get('/users/:userId', (req, res) => {
+  const userId = req.params.userId
+
+  getUser(userId).then((user) => {
+    res.json(user) // responding with JSON header information
+  })
 })
 
 app.use((req, res) => {

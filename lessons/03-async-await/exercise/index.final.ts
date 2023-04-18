@@ -26,29 +26,30 @@ async function main() {
 
 // Re-write all functions to use async/await
 
-// async function getVehicle(url: string) {
-//   const response = await fetch(url)
-//   const vehicle = await response.json()
-//   return vehicle
-// }
+async function getVehicle(url: string) {
+  const response = await fetch(url)
+  const vehicle = await response.json()
+  return vehicle
+}
 
-// async function getPersonVehicles(id: number): Promise<string[]> {
-//   const response = await fetch(`https://swapi.dev/api/people/${id}`)
-//   const person = await response.json()
+async function getPersonVehicles(id: number): Promise<string[]> {
+  const person = await fetch(`https://swapi.dev/api/people/${id}`).then((res) => res.json())
 
-//   // The above could also be written as
-//   // const person = await fetch(`https://swapi.dev/api/people/${id}`).then((response) => response.json())
+  // The above could also be written as
+  // const person = await fetch(`https://swapi.dev/api/people/${id}`).then((response) => response.json())
 
-//   return person.vehicles
-// }
+  return person.vehicles
+}
 
-// async function main() {
-//   const vehicles = await getPersonVehicles(1)
-//   const promiseArray = vehicles.map((url) => getVehicle(url))
-//   const allVehicles = await Promise.all(promiseArray)
-//   console.log('---')
-//   console.log(allVehicles)
-// }
+async function main() {
+  const vehicles = await getPersonVehicles(1)
+  const data = []
+
+  const promiseArray = vehicles.map(async (url) => await getVehicle(url))
+  const allVehicles = await Promise.all(promiseArray)
+  console.log('---')
+  console.log(allVehicles)
+}
 
 /****************************************
   Exercise: 3
