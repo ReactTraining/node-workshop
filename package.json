@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "description": "ReactTraining.com Node Workshop",
   "scripts": {
-    "start": "node index.js",
-    "app": "nodemon --exec \"ts-node app/index.ts\"  || exit 0",
-    "website": "npx http-server website",
-    "start-database": "npm json-server --watch database/db.json  -p 3333 --quiet",
+    "start": "nodemon --exec \"ts-node app/index.ts\"  || exit 0",
     "/////////// NOTES": "backslashes in --exec commands for Windows to work",
     "/////////// LECTURES:": "",
     "lecture-1": "clear && node lessons/01-js-and-node/lecture",
