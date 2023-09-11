@@ -82,16 +82,16 @@ json = `{ "users": [${json}] }`
 console.log(JSON.parse(json))
 ```
 
-Fix the bugs:
+The above code has bugs unless we do these fixes:
 
 ```js
 let json = data
   .split('\n')
   .map((item) => {
     const [id, name] = item.split(',')
-    return id ? `{ "id": ${id}, "name": "${name.trim()}" }` : false
+    return id ? `{ "id": ${id}, "name": "${name.trim()}" }` : false // <-- Add ternary
   })
-  .filter(Boolean)
+  .filter(Boolean) // <-- Add filter
   .join(',\n')
 
 json = `{ "users": [${json}] }`
