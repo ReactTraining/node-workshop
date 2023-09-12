@@ -7,7 +7,7 @@ const port = 3000
 class NotAuthorized extends Error {}
 
 app.get('/account', (req, res, next) => {
-  const authUser = getAuthUser()
+  const authUser = getAuthUser(false)
   if (authUser) {
     req.user = authUser
     next()

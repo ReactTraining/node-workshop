@@ -24,6 +24,8 @@ router.use('/api/users', require('./users'))
   React App
 *****************************************/
 
+// example.com/foooo
+
 router.get('/*', (req, res, next) => {
   const app = ReactDOMServer.renderToString(
     <StaticRouter location={req.url}>

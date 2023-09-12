@@ -52,11 +52,12 @@ router.get('/login', (req, res, next) => {
   db.query(`SELECT * FROM user WHERE user.email = '${email}' AND user.password = '${password}'`)
     .then((results) => {
       if (!results || results.length === 0) {
-        return Promise.reject(createError(401, '<h1>Login Failed</h1>'))
+        return Promise.reject(createError(403, '<h1>Login Failed</h1>'))
       }
       const user = results[0]
-      jwtStartSession(user.id, req, res)
-      res.send('<h1>Login Success</h1>')
+      jwtStartSession(user.id, req, res).then(() => {
+        res.send('<h1>Login Success</h1>')
+      })
     })
     .catch(next)
 })

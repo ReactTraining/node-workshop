@@ -12,7 +12,7 @@ export const app = express()
 *****************************************/
 
 // Makes logs as requests come in
-app.use(logger('dev'))
+app.use(logger('common'))
 
 // Tells express to use a folder for static assets
 app.use(express.static(path.join(__dirname, 'public')))
@@ -24,8 +24,6 @@ app.use(cors())
 app.use(cookieParser())
 
 // https://github.com/expressjs/body-parser#bodyparserurlencodedoptions
-// https://stackoverflow.com/questions/47232187/express-json-vs-bodyparser-json
-
 // The extended option allows to choose between parsing the URL-encoded data with the
 // querystring library(when false) or the qs library(when true).The "extended" syntax
 // allows for rich objects and arrays to be encoded into the URL - encoded format,
@@ -36,6 +34,7 @@ app.use(cookieParser())
 // the difference between qs and querystring and choose the appropriate setting.
 app.use(express.urlencoded({ extended: false }))
 
+// https://stackoverflow.com/questions/47232187/express-json-vs-bodyparser-json
 // Parse application/json
 app.use(express.json())
 
@@ -48,6 +47,7 @@ app.use('/api', router)
 
 router.get('/users', (req, res) => {
   res.json([
+    // http response for json
     { id: 1, name: 'Michael Jackson' },
     { id: 2, name: 'Ryan Florence' },
     { id: 3, name: 'Brad Westfall' },
@@ -55,7 +55,7 @@ router.get('/users', (req, res) => {
   ])
 })
 
-app.use((req, res) => {
+app.use((req, res, next) => {
   res.status(404).send('<h1>Not Found</h1>')
 })
 

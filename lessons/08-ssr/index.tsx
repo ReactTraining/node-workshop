@@ -7,3 +7,6 @@ function App() {
 
 const html = ReactDOMServer.renderToStaticMarkup(<App />)
 console.log(html)
+
+// SSR: Server Side Render
+// SPA:

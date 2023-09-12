@@ -8,6 +8,7 @@ const port = 3000
 // See the README for more information.
 app.get('*', (req, res, next) => {
   const authUser = getAuthUser()
+  req.user = authUser
   console.log(authUser)
   next()
 })

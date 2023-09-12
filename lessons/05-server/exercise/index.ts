@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 
 app.get('/users', (req, res, next) => {
   // db.query('SELECT * FROM user')
-  res.json({})
+  // res.json({ foo: 'bar' })
 })
 
 app.get('/users/:id', (req, res, next) => {
@@ -18,6 +18,8 @@ app.get('/users/:id', (req, res, next) => {
   const { id } = req.params
   // Parameters always come as strings. So verify it's a valid numeric string with `isInteger(id)`
   // and respond with a 404 not found if it's not valid
+
+  next()
 
   // db.query('SELECT * FROM user WHERE user.id = 1')
   res.json({})

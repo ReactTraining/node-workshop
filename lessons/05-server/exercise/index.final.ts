@@ -16,7 +16,7 @@ app.get('/users', (req, res, next) => {
 })
 
 app.get('/users/:id', (req, res, next) => {
-  const { id } = req.params
+  const { id } = req.params // string: '5'
   if (!isInteger(id)) {
     next()
     return

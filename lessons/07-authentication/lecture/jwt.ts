@@ -10,12 +10,16 @@ export function jwtStartSession(userId: number, req: express.Request, res: expre
     userId,
     exp: Math.floor(Date.now() / 1000) + 60 * 60, // one hour
   }
-  const token = jwt.sign(payload, tokenSecret)
-  new Cookies(req, res).set(cookieName, token, {
-    // Ability to replace cookie (logging out)
-    overwrite: true,
-    // httpOnly is true by default
-    // httpOnly: true
+  return new Promise((resolve, reject) => {
+    jwt.sign(payload, tokenSecret, (error, token) => {
+      new Cookies(req, res).set(cookieName, token, {
+        // Ability to replace cookie (logging out)
+        overwrite: true,
+        // httpOnly is true by default
+        // httpOnly: true
+      })
+    })
+    resolve(true)
   })
 }
 
