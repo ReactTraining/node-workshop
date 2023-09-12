@@ -26,7 +26,14 @@ app.use(cookieParser())
 // https://github.com/expressjs/body-parser#bodyparserurlencodedoptions
 // https://stackoverflow.com/questions/47232187/express-json-vs-bodyparser-json
 
-// Parse application/x-www-form-urlencoded
+// The extended option allows to choose between parsing the URL-encoded data with the
+// querystring library(when false) or the qs library(when true).The "extended" syntax
+// allows for rich objects and arrays to be encoded into the URL - encoded format,
+// allowing for a JSON - like experience with URL - encoded.For more information,
+// please see the qs library.
+
+// Defaults to true, but using the default has been deprecated. Please research into
+// the difference between qs and querystring and choose the appropriate setting.
 app.use(express.urlencoded({ extended: false }))
 
 // Parse application/json

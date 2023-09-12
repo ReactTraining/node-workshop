@@ -13,14 +13,11 @@ import { getUsers } from './users'
 // Then use <Array>.join('\n') to turn the array of strings into one string joined by a newline
 // For a bonus, try the above with multiple uses of `.then` for practice
 
-function getHTMLNames(): Promise<string> {
-  // return getUsers() // This is a promise based function
+// function getHTMLNames(): Promise<string> {
+//   return getUsers().then(x => { })
 
-  // This is just to temporarily satisfy TypeScript since we told TypeScript we
-  // would return promise that resolves to a string.
-  return Promise.resolve('This is temporary, use the getUsers function')
-}
+// }
 
-getHTMLNames().then((names) => {
-  console.log(names)
-})
+// getHTMLNames().then((names) => {
+//   console.log(names)
+// })

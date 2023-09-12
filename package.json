@@ -18,7 +18,7 @@
     "exercise-1": "clear && node lessons/01-js-and-node/exercise",
     "exercise-2": "clear && ts-node lessons/02-promises/exercise/index.ts",
     "exercise-3": "clear && ts-node lessons/03-async-await/exercise/index.ts",
-    "exercise-4": "clear && ts-node lessons/04-cli/exercise/index.ts",
+    "exercise-4": "clear && ts-node lessons/04-cli/exercise/index.final.ts",
     "exercise-5": "clear && nodemon --exec \"ts-node lessons/05-server/exercise/index.ts\"  || exit 0",
     "exercise-6": "clear && nodemon --exec \"ts-node lessons/06-middleware/exercise/index.ts\"  || exit 0",
     "exercise-7": "clear && nodemon --exec \"ts-node lessons/07-authentication/exercise/index.ts\"  || exit 0"

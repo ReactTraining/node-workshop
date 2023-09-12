@@ -1,10 +1,10 @@
-console.log("let's get started")
-
 /**
  * Intro
  */
 
 // EcmaScript, JavaScript, Node
+
+// ES2023
 
 /**
  * Versions
@@ -27,8 +27,11 @@ console.log("let's get started")
  * Modules
  */
 
-// CommonJS
-// ESModules
+// // CommonJS (older)
+// const SomeThing = require('SomeThing')
+
+// // ESModules
+// import React from 'React'
 
 /**
  * Env
@@ -42,21 +45,22 @@ console.log("let's get started")
  * Scope
  */
 
-// var x = [5, 6, 7]
 // function scope() {
-//   for (var i = 0; i < x.length; i++) {
-//     var item = x[i]
+//   for (let i = 0; i < x.length; i++) {
+//     const item = x[i]
 //     console.log(item)
 //   }
 
-//   console.log(i)
-//   console.log(item)
+//   // console.log(i)
+//   // console.log(item)
 // }
 // scope()
 
 /**
  * Object and Array Literals
  */
+
+// const person = { name: 'brad', age: 90 }
 
 /**
  * Function Types
@@ -66,27 +70,41 @@ console.log("let's get started")
  * Expressions and Expression Chaining
  */
 
+// function getPerson() {
+//   return { name: 'brad', hobbies: ['code'] }
+// }
+
+// const x = getPerson().hobbies[0].substring(0, 2)
+
 /**
  * Map, Filter, Reduce, Find, Includes
  */
+
+// const cart = [34, 90, 78]
+
+// const total = cart.reduce((runningTotal, item) => runningTotal + item, 0)
+
+// console.log(total)
 
 /**
  * File System
  */
 
-// const fs = require('fs')
-// const path = require('path')
-// const dataPath = path.join(__dirname, `data.csv`)
-// const data = fs.readFileSync(dataPath, 'utf8')
+const fs = require('fs')
+const path = require('path')
+const dataPath = path.join(__dirname, `data.csv`)
 
-// let json = data
-//   .split('\n')
-//   .map((item) => {
-//     const [id, name] = item.split(',')
-//     return `{ "id": ${id}, "name": "${name}" }`
-//   })
-//   .join(',\n')
+const data = fs.readFileSync(dataPath, 'utf8')
 
-// json = `{ "users": [${json}] }`
+let json = data
+  .split('\n')
+  .map((item) => {
+    const [id, name] = item.split(',')
+    return name ? `{ "id": ${id}, "name": "${name.trim()}" }` : false
+  })
+  .filter(Boolean)
+  .join(',\n')
 
-// console.log(JSON.parse(json))
+json = `{ "users": [${json}] }`
+
+console.log(JSON.parse(json)) // string -> object
