@@ -1,11 +1,23 @@
-import fs from 'fs'
+// import fs from 'fs'
 import path from 'path'
-// const fsPromises = require('fs').promises // the way the docs show
-// import { promises as fsPromises } from 'fs' // the esm version
-// import fetch from 'node-fetch'
+import { promises as fsPromises } from 'fs' // the esm version
+import fetch from 'node-fetch'
 
-const dataPath = path.join(__dirname, `data.csv`)
+function getVehicle(url: string) {
+  return fetch(url).then((response) => response.json())
+}
 
-// Let's make this asynchronous
-const data = fs.readFileSync(dataPath, 'utf8')
-console.log(data)
+function getPersonVehicles(id: number): Promise<string[]> {
+  return fetch(`https://swapi.dev/api/people/${id}`)
+    .then((response) => response.json())
+    .then((data) => data.vehicles)
+}
+
+getPersonVehicles(1)
+  .then((vehicles) => {
+    const p = vehicles.map((url) => getVehicle(url))
+    return Promise.all(p)
+  })
+  .then((allVehicles) => {
+    console.log(allVehicles)
+  })
